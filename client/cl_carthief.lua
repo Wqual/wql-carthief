@@ -48,7 +48,7 @@ exports.ox_target:addLocalEntity(npc,options)
 end)
 
 RegisterNetEvent("checkauto", function() 
-    Wqual()
+    WqualCarThief()
 end)
 
 local random = {
@@ -60,7 +60,7 @@ local random = {
 }
 
 
-Wqual = function()
+WqualCarThief = function()
     lavoro = true
     ESX.Game.SpawnVehicle('cheetah', vector3(1282.5558, -1732.1664, 52.7154), 85.29, function(v)
         SetPedIntoVehicle(PlayerPedId(), v, -1)
@@ -70,16 +70,16 @@ Wqual = function()
     local posizione = random[math.random(1, #random)]
 
     waypoint5 = SetNewWaypoint(posizione)
-    Wql = AddBlipForCoord(posizione)
-    SetBlipSprite (Wql, 353)
-    SetBlipDisplay(Wql, 6)
-    SetBlipScale  (Wql, 0.9)
-    SetBlipColour (Wql, 1)
-    SetBlipAsShortRange(Wql, true)
+    local WqlVenditaAuto = AddBlipForCoord(posizione)
+    SetBlipSprite (WqlVenditaAuto, 811)
+    SetBlipDisplay(WqlVenditaAuto, 6)
+    SetBlipScale  (WqlVenditaAuto, 0.9)
+    SetBlipColour (WqlVenditaAuto, 1)
+    SetBlipAsShortRange(WqlVenditaAuto, true)
 
     BeginTextCommandSetBlipName('STRING')
     AddTextComponentString("Punto di consegna")
-    EndTextCommandSetBlipName(Wql)
+    EndTextCommandSetBlipName(WqlVenditaAuto)
 
     while true do
         Citizen.Wait(0)
@@ -92,7 +92,7 @@ Wqual = function()
                 local vehicle = GetVehiclePedIsIn(playerPed, false)
                 DeleteEntity(vehicle)
                 TriggerServerEvent("addMoneyToInventory", math.random(14000, 23000))
-                RemoveBlip(Wql)
+                RemoveBlip(WqlVenditaAuto)
                 print("ciao")
             end
         end
