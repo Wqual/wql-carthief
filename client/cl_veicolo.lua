@@ -1,7 +1,6 @@
 local blipPosition = vector3(-390.2397, 6059.2056, 31.5000)
 
 Citizen.CreateThread(function()
-    local blip = AddBlipForCoord(blipPosition.x, blipPosition.y, blipPosition.z)
         
     while true do
         Citizen.Wait(0)
